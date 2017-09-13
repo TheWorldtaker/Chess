@@ -16,14 +16,14 @@ namespace CA2._3
             {
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 1-10
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 11-20
-                0, 1, 1, 3, -2, 1, 1, 1, 1, 0, // 21-30
+                0, 1, 1, 1, 1, -2, 1, 1, 5, 0, // 21-30
                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, // 31-40
                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, // 41-50
                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, // 51-60
                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, // 61-70
                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, // 71-80
                 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, // 81-90
-                0, 1, 1, 3, 2, 1, 1, 1, 1, 0, // 91-100
+                0, 1, 1, 1, 1, 2, 4, 1, 1, 0, // 91-100
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 101-110
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0  // 111-120
             };
@@ -34,7 +34,7 @@ namespace CA2._3
             //постановка фигуры на поле
             
 
-            PP[] tes = new PP[5];
+            PP[] tes = new PP[32];
             tes[0].name = "W_KING";
             tes[0].pos = 95;
             tes[0].color = "WHITE";
@@ -64,8 +64,19 @@ namespace CA2._3
             tes[3].id = 3;
             tes[3].cost = 2;
 
+            tes[4].name = "W_BISHOP";
+            tes[4].pos = 97;
+            tes[4].color = "WHITE";
+            tes[4].stat = true;
+            tes[4].id = 4;
+            tes[4].cost = 2;
 
-
+            tes[5].name = "B_ROOK";
+            tes[5].pos = 29;
+            tes[5].color = "BLACK";
+            tes[5].stat = true;
+            tes[5].id = 5;
+            tes[5].cost = 2;
 
             /*Piece W_KING = new Piece();
             W_KING.pos = 95;
@@ -102,7 +113,7 @@ namespace CA2._3
             //поиск фигуры по позиции
             for (int i = 0; i < tes.Length; i++)
             {
-                if (tes[i].pos == f_ep)
+                if (tes[i].pos == f_ep&& tes[i].stat==true)
                 {
                     correct = true;
                     if (color_move == true && tes[i].color == "WHITE")

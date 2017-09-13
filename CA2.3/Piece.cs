@@ -20,6 +20,8 @@ namespace CA2._3
         public void Move(string name, sbyte ep,ref bool Ok_pm)
         {
             sbyte[] pm_king = { +11, +10, +9, +1, -1, -9, -10, -11 };
+            sbyte[] pm_bishop = { +11, +9, -9, -11 };
+            sbyte[] pm_rook = { +10, +1, -1, -10 };
             sbyte[] pm_knigth = { };
             //проверка хода по соответствию фигуры
             switch (name)
@@ -40,16 +42,32 @@ namespace CA2._3
                         }
                     }
                     break;
-                case "W_KNIGHT":
-                case "B_KNIGHT":
-                    for (int j = 0; j < pm_knigth.Length; j++)
+                case "W_BISHOP":
+                case "B_BISHOP":
+                    for (int j = 0; j < pm_bishop.Length; j++)
                     {
-                        if (ep == pm_knigth[j])
+                        if (ep == pm_bishop[j]||ep % pm_bishop[j]==0)
                         {
                             Ok_pm = true;
                             break;
                         }
-                        else if (j == pm_knigth.Length)
+                        else if (j == pm_bishop.Length)
+                        {
+                            Console.WriteLine("Фигура так не ходит!");
+                            Ok_pm = false;
+                        }
+                    }
+                    break;
+                case "W_ROOK":
+                case "B_ROOK":
+                    for (int j = 0; j < pm_rook.Length; j++)
+                    {
+                        if (ep == pm_rook[j] || ep % 10==0 )
+                        {
+                            Ok_pm = true;
+                            break;
+                        }
+                        else if (j == pm_rook.Length)
                         {
                             Console.WriteLine("Фигура так не ходит!");
                             Ok_pm = false;
@@ -78,6 +96,7 @@ namespace CA2._3
                             if (tes[w].color != tescolor)
                             {
                                 gp = true;
+                                tes[w].stat=false;
                                 break;
                             }
                             else if (tes[w].color == tescolor)
